@@ -5,10 +5,17 @@ const dataIoT = require('../Models/dataIoT')
 
 
 //Rutas
-router.get('/consultar', (req , res) => {
-    res.send(200, {resultado: []})
+//Obtener todos los datos
+router.get('/consultar', async (req , res) => {
+    try {
+        const datos = await dataIoT.find()
+        res.json(datos)
+    } catch (error) {
+        res.json({ message:err})
+    }
 })
 
+//Enviar un dato
 router.post('/enviar_datos', (req , res) => {
     console.log(req.body)
     const datos = new dataIoT({
@@ -25,6 +32,16 @@ router.post('/enviar_datos', (req , res) => {
         .catch(err => {
             res.json({message: err})
         })
+})
+
+//Traer un dato de un usuario
+router.get('/:user', async (req, res) => {
+   try {
+        const data = await dataIoT.find({userID: req.params.user})
+        res.json(data)
+   } catch (err) {
+       res.json({message: err})
+   }
 })
 
 module.exports = router;
