@@ -2,17 +2,25 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const postRoute = require('./routes/api')
-
+const morgan = require('morgan')
+const cors = require('cors')
+const path  = require('path')
+const history = require('connect-history-api-fallback');
 
 require('dotenv/config')
 
+//Middleware
 const app = express()
-const port = process.env.PORT || 3001
-
+app.use(morgan('tiny'))
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false}))
 app.use(bodyParser.json())
+const port = process.env.PORT || 3001
+
 
 app.use('/api', postRoute)
+app.use(history());
+app.use(express.static(path.join(__dirname, 'public')));
 
 //conexion a la base de datos
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true },(err, res) => {
