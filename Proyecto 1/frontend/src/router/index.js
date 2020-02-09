@@ -19,6 +19,16 @@ const routes = [
     path: '/see_data',
     name: 'data',
     component: () => import(/* webpackChunkName: "about" */ '../views/dataIoT.vue')
+  },
+  {
+    path: '/SignUp',
+    name: 'SignUp',
+    component: () => import(/* webpackChunkName: "about" */ '../views/SignUp')
+  },
+  {
+    path: '/Login',
+    name: 'Login',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Login')
   }
 ]
 

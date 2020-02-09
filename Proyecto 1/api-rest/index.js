@@ -1,7 +1,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
-const postRoute = require('./routes/api')
+const dataRoute = require('./routes/api')
+const userRoute = require('./routes/users')
 const morgan = require('morgan')
 const cors = require('cors')
 const path  = require('path')
@@ -18,7 +19,8 @@ app.use(bodyParser.json())
 const port = process.env.PORT || 3001
 
 
-app.use('/api', postRoute)
+app.use('/api', dataRoute)
+app.use('/user', userRoute)
 app.use(history());
 app.use(express.static(path.join(__dirname, 'public')));
 
