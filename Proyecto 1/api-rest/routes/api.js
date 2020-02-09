@@ -44,4 +44,9 @@ router.get('/:user', async (req, res) => {
    }
 })
 
+//Login
+router.get('/login', (req, res) => {
+    
+})
+
 module.exports = router;

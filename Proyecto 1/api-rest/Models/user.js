@@ -1,28 +1,30 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+const bcrypt = require('bcrypt')
 
-const uniqueValidator = require('mongoose-unique-validator');
 
-// Roles
-const roles = {
-  values: ['ADMIN', 'USER'],
-  message: '{VALUE} no es un rol válido'
-}
+const UserSchema = new Schema({
+    email: { type:String, unique:true, lowercase:true},
+    userID: String,
+    Name: String,
+    password: { type: String, select: false},
+    lastLogin: Date
+})
 
-const Schema = mongoose.Schema;
+UserSchema.pre('save', (next) =>{
+    let user = this
+    if(!user.isModified('password')) return next()
 
-const userSchema = new Schema({
-  nombre:   { type: String, required: [true, 'El nombre es necesario'] },
-  email: { type: String, unique: true, required: [true, 'Email es necesario'] },
-  pass: { type: String, required: [true, 'Pass es necesario'] },
-  date: { type: Date, default: Date.now },
-  role: { type: String, default: 'USER', enum: roles },
-  activo: { type: Boolean, default: true }
-});
+    bcrypt.genSalt(10, (err, salt) => {
+        if (err) return next()
 
-// Validator
-userSchema.plugin(uniqueValidator, { message: 'Error, esperaba {PATH} único.' });
+        bcrypt.hash(user.password, salt, null, (err, hash) => {
+            if (err) return next(err)
 
-// Convertir a modelo
-const User = mongoose.model('User', userSchema);
+            user.password = hash
+            next()
+        })
+    })
+})
 
-export default User;
+module.exports = mongoose.model('User', UserSchema)
