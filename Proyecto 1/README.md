@@ -24,3 +24,7 @@ Otras tecnologías:
  - [Bootstrap](https://getbootstrap.com/) Toolkit HTML, CSS y JS
 
 Otras dependencias estan listadas en [package.json](https://github.com/jaromanp/ST0263-31-Proyectos/blob/master/Proyecto%201/frontend/package.json)
+
+### Autenticación Servicios API-REST
+La autenticación de los servicios API-REST se realiza principalmente por medio de [JsonWebToken](https://jwt.io/)  el cual es un estándar abierto ([RFC-7519](https://tools.ietf.org/html/rfc7519)) basado en JSON para crear un token que sirva para enviar datos entre aplicaciones o servicios y garantizar que sean válidos y seguros.
+Tanto del lado del back como del front end se utiliza esta tecnología.
