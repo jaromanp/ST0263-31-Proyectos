@@ -25,6 +25,23 @@ Otras tecnologías:
 
 Otras dependencias estan listadas en [package.json](https://github.com/jaromanp/ST0263-31-Proyectos/blob/master/Proyecto%201/frontend/package.json)
 
+### Especificación API-REST
+La especificación de los servicios brindados por el servidor se hizo de la siguiente forma:
+#### Rutas /api 
+Encargadas de la recolección y visualización de los datos
+ - /api/consultar	
+Petición tipo *Get* que devuelve todos los datos registrados en la base de datos
+ - /api/enviar_datos
+Petición tipo *Post* que recibe los datos del sensor
+ - /api/:user
+Petición tipo *Get* donde :user es el nombre de un usuario ya registrado, y de donde se devuelven todos los datos del sensor de este usuario
+#### Rutas /user
+Encargadas de la autenticación (Registro y Login)
+ - /user/signup
+Petición tipo *Post* para el registro de los usuarios
+ - /user/login
+Petición tipo *Post* para el inicio de sesión de los usuarios
+
 ### Autenticación Servicios API-REST
 La autenticación de los servicios API-REST se realiza principalmente por medio de [JsonWebToken](https://jwt.io/)  el cual es un estándar abierto ([RFC-7519](https://tools.ietf.org/html/rfc7519)) basado en JSON para crear un token que sirva para enviar datos entre aplicaciones o servicios y garantizar que sean válidos y seguros.
 Tanto del lado del back como del front end se utiliza esta tecnología.
