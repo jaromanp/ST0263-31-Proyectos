@@ -14,7 +14,13 @@ Otras tecnologías y dependencias del back:
  - [Bcrypt](https://www.npmjs.com/package/bcrypt) Criptografía de las contraseñas
  - [Cors](https://www.npmjs.com/package/cors) Middleware entre Front y Back end
 
-Otras dependencias estan listadas en package.json
+Otras dependencias estan listadas en [package.json](https://github.com/jaromanp/ST0263-31-Proyectos/blob/master/Proyecto%201/api-rest/package.json)
 
 ### Front-End
-Para el desarrallo del Front-End la principal tecnología que se utilizó  fue VUE
+Para el desarrallo del Front-End la principal tecnología que se utilizó  fue [VUE](https://vuejs.org/) ya que hace tambien uso de la tecnología Node.JS lo que permite una versatilidad en cuanto escalabilidad entre librerias y un framework full-featured.
+Otras tecnologías:
+
+ - [Axios](https://github.com/axios/axios) Cliente HTTP
+ - [Bootstrap](https://getbootstrap.com/) Toolkit HTML, CSS y JS
+
+Otras dependencias estan listadas en [package.json](https://github.com/jaromanp/ST0263-31-Proyectos/blob/master/Proyecto%201/frontend/package.json)
